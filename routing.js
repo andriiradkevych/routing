@@ -29,7 +29,7 @@ window.RouterWorker = {
             }
         };
         routerWorker.onerror = function(e) {
-            console.log('Error from worker: ', e);
+            console.error('Error from worker: ', e);
         };
 
         routerWorker.postMessage({defaultPath: this.getPath(location.href), routes});
