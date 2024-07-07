@@ -13,9 +13,18 @@ self.onmessage = async function(e) {
     });  
 
     const all = await Promise.all(Object.keys(routes).map(async route => {
+      let html;
+
+      const path = routes[route];
+
+      if (path === defaultPath) {
+        html = defaultPage;
+      }else {
+        html = await fetchPageByRoute(routes[route]);
+      }
       return {
         route,
-        html: await fetchPageByRoute(routes[route])
+        html
       };
     }));
     
