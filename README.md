@@ -3,5 +3,6 @@ Routing by using web worker
 
 
 ```
-npx http-server
+npm install
+npm run start
 ```
