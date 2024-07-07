@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head lang="en">
+    <title>Web worker routing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+
+<body>
+    <a href="/about" onclick="RouterWorker.hrefClick(event)">About</a>
+    <a href="/" onclick="RouterWorker.hrefClick(event)">Main</a>
+
+    <div id="route">
+    </div>
+
+    <script type="text/javascript"  src="routing.js"></script>
+    <script>
+        if (window.Worker) {
+            const routes = {
+                '/about': './pages/about.html',
+                '/': './pages/main.html'
+            }
+
+            RouterWorker.initialize(routes, document.getElementById('route'))
+        }
+    </script>
+</body>
